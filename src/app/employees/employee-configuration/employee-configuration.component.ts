@@ -25,26 +25,31 @@ export class EmployeeConfigurationComponent {
     employeeCode: '',
     joiningOn: ''
   };
-  isCurrentSameAsPermanent: Boolean = false; empData: any; employeeDetails: any
+  isCurrentSameAsPermanent: Boolean = false; empData: any; employeeDetails: any;
+  id: any = sessionStorage.getItem('empId');formattedDate:any;
   constructor(private api: ApiService, private router: Router) { }
-  ngOnInit(){
-    if(sessionStorage.getItem('empId')){
-    this.employee = {
-      firstName: String(sessionStorage.getItem('empFirstName')),
-      lastName: String(sessionStorage.getItem('empLastName')),
-      middleName: String(sessionStorage.getItem('empMiddleName')),
-      birthDate: '',
-      gender: '',
-      permanentAddress: '',
-      currentAddress: '',
-      isCurrentSameAsPermanent:false,
-      email: '',
-      mobileNo: '',
-      otherContactNo: '',
-      employeeCode: String(sessionStorage.getItem('employeeCode')),
-      joiningOn: ''
-    };
-  }
+  ngOnInit() {
+    // const isoDate = "2024-09-18T00:00:00+00:00";
+    const isoDate = String(sessionStorage.getItem('empJoiningOn'));
+    const date = new Date(isoDate);
+    this.formattedDate = date.toISOString().split('T')[0];
+    if (sessionStorage.getItem('empId')) {
+      this.employee = {
+        firstName: String(sessionStorage.getItem('empFirstName')),
+        lastName: String(sessionStorage.getItem('empLastName')),
+        middleName: String(sessionStorage.getItem('empMiddleName')),
+        birthDate: '',
+        gender: '',
+        permanentAddress: '',
+        currentAddress: '',
+        isCurrentSameAsPermanent: false,
+        email: '',
+        mobileNo: '',
+        otherContactNo: '',
+        employeeCode: String(sessionStorage.getItem('employeeCode')),
+        joiningOn: this.formattedDate
+      };
+    }
   }
   addOrUpdateEmployee() {
     // console.log(this.employeeForm.value);
@@ -100,7 +105,7 @@ export class EmployeeConfigurationComponent {
           confirmButtonText: 'Close'
         });
       })
-    }else{
+    } else {
       this.empData = {
         "id": sessionStorage.getItem('empId'),
         "firstName": this.employee.firstName,
@@ -115,9 +120,9 @@ export class EmployeeConfigurationComponent {
         // "personalMobileNo": this.employee.mobileNo,
         // "otherContactNo": this.employee.otherContactNo,
         "employeeCode": this.employee.employeeCode,
-        // "joiningOn": this.employee.joiningOn
+        "joiningOn": this.employee.joiningOn
       }
-      this.api.updateEmployee(this.empData,sessionStorage.getItem('authToken')).subscribe((data)=>{
+      this.api.updateEmployee(this.empData, sessionStorage.getItem('authToken')).subscribe((data) => {
         // console.log("emp details", data)
         // this.employeeDetails = data;
         if (data.data.isValid == false) {

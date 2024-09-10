@@ -47,6 +47,7 @@ editEmployee(employee: any){
   sessionStorage.setItem('empReportingToName',employee.reportingToName);
   sessionStorage.setItem('empResignationOn',employee.resignationOn);
   sessionStorage.setItem('empUserId',employee.userId);
+  sessionStorage.setItem('empJoiningOn',employee.joiningOn);
   this.router.navigateByUrl('/employeeConfig');
 }
 deleteEmployee(index:any){
@@ -66,6 +67,7 @@ addEmployee(){
   sessionStorage.setItem('empReportingToName',"");
   sessionStorage.setItem('empResignationOn',"");
   sessionStorage.setItem('empUserId',"");
+  sessionStorage.setItem('empJoiningOn',"");
   this.router.navigateByUrl('/employeeConfig');
 }
 }
