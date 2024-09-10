@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+<div class="container mt-4 d-flex justify-content-center">
+  <div class="card custom-card-width">
+    <div class="card-body">
+      <h2 class="card-title mb-4 text-center">Update Company Details</h2>
+      <form #companyForm="ngForm" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="companyName" class="form-label">Company Name</label>
+          <input type="text" id="companyName" [(ngModel)]="company.companyName" name="companyName" class="form-control"
+            placeholder="Enter company name" required>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="shortName" class="form-label">Short Name</label>
+            <input type="text" id="shortName" [(ngModel)]="company.shortName" name="shortName" class="form-control"
+              placeholder="Enter short name" required>
+          </div>
+          <div class="col-md-6">
+            <label for="contactPerson" class="form-label">Contact Person Name</label>
+            <input type="text" id="contactPerson" [(ngModel)]="company.contactPerson" name="contactPerson"
+              class="form-control" placeholder="Enter contact person's name" required>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="address1" class="form-label">Address Line 1</label>
+            <input type="text" id="address1" [(ngModel)]="company.addressLine1" name="addressLine1" class="form-control"
+              placeholder="Enter address line 1" required>
+          </div>
+          <div class="col-md-6">
+            <label for="address2" class="form-label">Address Line 2</label>
+            <input type="text" id="address2" [(ngModel)]="company.addressLine2" name="addressLine2"
+              class="form-control" placeholder="Enter address line 2 (optional)">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="zipCode" class="form-label">Zip Code</label>
+            <input type="text" id="zipCode" [(ngModel)]="company.zipCode" name="zipCode" class="form-control" placeholder="Enter zip code" required>
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" [(ngModel)]="company.email" name="email" class="form-control" placeholder="Enter email address" required>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="phone1" class="form-label">Phone Number 1</label>
+            <input type="text" id="phone1" [(ngModel)]="company.phoneNumber1" name="phoneNumber1" class="form-control"
+              placeholder="Enter primary phone number" required>
+          </div>
+          <div class="col-md-6">
+            <label for="phone2" class="form-label">Phone Number 2</label>
+            <input type="text" id="phone2" [(ngModel)]="company.phoneNumber2" name="phoneNumber2" class="form-control" placeholder="Enter secondary phone number (optional)">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="vatNo" class="form-label">VAT No</label>
+            <input type="text" id="vatNo" [(ngModel)]="company.vatNo" name="vatNo" class="form-control" placeholder="Enter VAT number" required>
+          </div>
+          <div class="col-md-4">
+            <label for="crNo" class="form-label">CR No</label>
+            <input type="text" id="crNo" [(ngModel)]="company.crNo" name="crNo" class="form-control" placeholder="Enter CR number" required>
+          </div>
+          <div class="col-md-4">
+            <label for="currency" class="form-label">Currency</label>
+            <select id="currency" [(ngModel)]="company.currency" name="currency" class="form-select" required>
+              <option *ngFor="let currency of currencies" [value]="currency.id">{{currency.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" (click)="updateCompany()" class="btn btn-primary w-100">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+

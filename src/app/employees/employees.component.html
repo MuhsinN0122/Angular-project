@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<!-- Loading Spinner -->
+<!-- <div *ngIf="isLoading" class="loading-overlay">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div> -->
+
+<div class="container mt-5">
+  <h2 class="text-center">Employees</h2>
+
+  <!-- Add Employee Button -->
+  <div class="d-flex justify-content-end mb-4">
+    <button type="button" class="btn btn-outline-primary" (click)="addEmployee()">
+      Add Employee
+    </button>
+  </div>
+
+  <!-- Employee Table -->
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Sl No.</th>
+          <th>Employee Code</th>
+          <th>Full Name</th>
+          <th>Joining On</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeesList.data.result; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ employee.employeeCode }}</td>
+          <td>{{ employee.fullName }}</td>
+          <td>{{ employee.joiningOn | date }}</td>
+          <td class="text-center">
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-outline-warning btn-sm me-2" (click)="editEmployee(employee)">
+                Edit
+              </button>
+              <button class="btn btn-outline-danger btn-sm" (click)="deleteEmployee(i)">
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,133 @@
+<!-- <p>employee-configuration works!</p> -->
+<app-navbar></app-navbar>
+<div class="container mt-4 d-flex justify-content-center">
+    <!-- Card with Custom Width -->
+    <div class="card custom-card-width">
+      <div class="card-body">
+        <!-- Heading -->
+        <h2 class="card-title text-center mb-4">Employee configuration</h2>
+  
+        <!-- Form -->
+        <form>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="Enter first name" 
+                     [(ngModel)]="employee.firstName" name="firstName">
+            </div>
+            <div class="col-md-4">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastName" placeholder="Enter last name" 
+                     [(ngModel)]="employee.lastName" name="lastName">
+            </div>
+            <div class="col-md-4">
+              <label for="middleName" class="form-label">Middle Name</label>
+              <input type="text" class="form-control" id="middleName" placeholder="Enter middle name" 
+                     [(ngModel)]="employee.middleName" name="middleName">
+            </div>
+          </div>
+  
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="birthDate" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="birthDate" 
+                     [(ngModel)]="employee.birthDate" name="birthDate">
+            </div>
+            <div class="col-md-4">
+              <label for="gender" class="form-label">Gender</label>
+              <select id="gender" class="form-select" 
+                      [(ngModel)]="employee.gender" name="gender">
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+                <option value="2">Other</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="row mb-3" *ngIf="!employee.isCurrentSameAsPermanent">
+            <div class="col-md-6">
+              <label for="parmenantAddress" class="form-label">Permanent Address</label>
+              <textarea class="form-control" id="parmenantAddress" rows="2" 
+                        [(ngModel)]="employee.permanentAddress" name="permanentAddress" placeholder="Enter permanent address"></textarea>
+            </div>
+            <div class="col-md-6">
+              <label for="currentAddress" class="form-label">Current Address</label>
+              <textarea class="form-control" id="currentAddress" rows="2" 
+                        [(ngModel)]="employee.currentAddress" name="currentAddress" placeholder="Enter current address"></textarea>
+            </div>
+          </div>
+
+          <div class="row mb-3" *ngIf="employee.isCurrentSameAsPermanent">
+            <div class="col-md-12">
+              <label for="parmenantAddress" class="form-label">Permanent Address</label>
+              <textarea class="form-control" id="parmenantAddress" rows="2" 
+                        [(ngModel)]="employee.permanentAddress" name="permanentAddress" placeholder="Enter permanent address"></textarea>
+            </div>
+            <!-- <div class="col-md-6">
+              <label for="currentAddress" class="form-label">Current Address</label>
+              <textarea class="form-control" id="currentAddress" rows="2" 
+                        [(ngModel)]="employee.currentAddress" name="currentAddress" placeholder="Enter current address"></textarea>
+            </div> -->
+          </div>
+  
+          <!-- Highlighted Check Box -->
+          <!-- <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="isCurrentSameAsPermanent" 
+                   [(ngModel)]="employee.isCurrentSameAsPermanent" name="isCurrentSameAsPermanent">
+            <label class="form-check-label" for="isCurrentSameAsPermanent">
+              Is Current Address Same as Permanent Address?
+            </label>
+          </div> -->
+          <div class="mb-3">
+            <!-- <input class="form-check-input" type="checkbox" id="isCurrentSameAsPermanent" 
+                   [(ngModel)]="employee.isCurrentSameAsPermanent" name="isCurrentSameAsPermanent">
+            <label class="form-check-label" for="employee.isCurrentSameAsPermanent">
+                Is Current Address Same as Permanent Address?
+            </label> -->
+            <label>
+                <input type="checkbox" name="myCheckbox" [(ngModel)]="employee.isCurrentSameAsPermanent" />
+                Is current address same as permanent address
+              </label>
+          </div>
+  
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" 
+                     [(ngModel)]="employee.email" name="email">
+            </div>
+            <div class="col-md-4">
+              <label for="mobileNo" class="form-label">Mobile Number</label>
+              <input type="tel" class="form-control" id="mobileNo" placeholder="Enter mobile number" 
+                     [(ngModel)]="employee.mobileNo" name="mobileNo">
+            </div>
+            <div class="col-md-4">
+              <label for="otherContactNo" class="form-label">Other Contact Number</label>
+              <input type="tel" class="form-control" id="otherContactNo" placeholder="Enter other contact number" 
+                     [(ngModel)]="employee.otherContactNo" name="otherContactNo">
+            </div>
+          </div>
+  
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="employeeCode" class="form-label">Employee Code</label>
+              <input type="text" class="form-control" id="employeeCode" placeholder="Enter employee code" 
+                     [(ngModel)]="employee.employeeCode" name="employeeCode">
+            </div>
+            <div class="col-md-4">
+              <label for="joiningOn" class="form-label">Joining Date</label>
+              <input type="date" class="form-control" id="joiningOn" 
+                     [(ngModel)]="employee.joiningOn" name="joiningOn">
+            </div>
+          </div>
+  
+          <!-- Centered Submit Button -->
+          <div class="text-center">
+            <button (click)="addOrUpdateEmployee()" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
